@@ -13,7 +13,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Iterable<Movie> getMovies() {
-        return null;
+        return repo.findAll();
     }
 
     @Override
