@@ -25,7 +25,7 @@ public class SeedDB {
 
     @PostConstruct
     public void init(){
-        movieRepository.save(new Movie("Minions", "Minions is a movie for kids", LocalDateTime.of(2019, 3, 28, 14, 33, 48, 0), "cartoon", 10, "/src/assets/film1.jpg", 1, 30));
+        movieRepository.save(new Movie("Minions", " American computer-animated comedy film produced by Illumination Entertainment", LocalDateTime.of(2019, 3, 28, 14, 33, 48, 0), "cartoon", 10, "/src/assets/film1.jpg", 1, 30));
         movieRepository.save(new Movie("The Matrix", "The Matrix is a computer-generated dream world designed to keep these humans under control.", LocalDateTime.of(2019, 10, 28, 14, 33, 48, 0), "cartoon", 50, "/src/assets/film2.png", 2, 25));
 
         for(int hall = 1; hall <= numberOfHalls; hall++){
