@@ -1,22 +1,42 @@
 .Movie {
   width: 300px;
-  padding: 10px;
-  border: 1px solid black;
-  margin: 16px;
+  padding: 16px;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 20px;
   .description{
     &__item{
       display: flex;
       justify-content: space-around;
+      max-height: 130px;
+      overflow: hidden;
       .title{
         width: 40%;
         padding-right: 16px;
-        text-align: right;
+        text-align: left;
         font-weight: bold;
       }
       .data{
         width: 60%;
         text-align: left;
+        color: lightgray;
+      }
+      .description{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        white-space: pre-wrap;
       }
     }
+  }
+  img{
+    width: 300px;
+    height: 200px;
+  }
+  p{
+    margin: 6px;
+  }
+  button{
+    margin-top: 16px;
   }
 }
