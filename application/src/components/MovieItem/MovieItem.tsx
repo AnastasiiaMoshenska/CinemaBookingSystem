@@ -2,11 +2,9 @@ import React from 'react';
 import styles from './MovieItem.module.scss';
 
 export default function MovieItem(props: any){
-    console.log(props.movie.id)
-    //TODO check how many times it renders
     return(
         <div className={styles.Movie}>
-            <img alt="img"/>
+            <img src={props.movie.imgPath} alt="img"/>
             <div className={styles.description}>
                 <div className={styles.description__item}>
                     <p className={styles.title}>Title:</p>
@@ -15,7 +13,7 @@ export default function MovieItem(props: any){
 
                 <div className={styles.description__item}>
                     <p className={styles.title}>Age:</p>
-                    <p className={styles.data}>{props.movie.age}</p>
+                    <p className={styles.data}>{props.movie.age}+</p>
                 </div>
 
                 <div className={styles.description__item}>
@@ -25,12 +23,17 @@ export default function MovieItem(props: any){
 
                 <div className={styles.description__item}>
                     <p className={styles.title}>Description:</p>
-                    <p className={styles.data}>{props.movie.description}</p>
+                    <p className={styles.data + " " + styles.description}>{props.movie.description}</p>
                 </div>
 
                 <div className={styles.description__item}>
-                    <p className={styles.title}>Date & Time:</p>
-                    <p className={styles.data}>{props.movie.date}</p>
+                    <p className={styles.title}>Date:</p>
+                    <p className={styles.data}>{props.movie.date.slice(0, 10)}</p>
+                </div>
+
+                <div className={styles.description__item}>
+                    <p className={styles.title}>Time:</p>
+                    <p className={styles.data}>{props.movie.date.slice(11, 16)}</p>
                 </div>
             </div>
             <button>Book</button>

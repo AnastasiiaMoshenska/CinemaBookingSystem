@@ -6,6 +6,7 @@ export default interface Movie{
     genre: string,
     age: string,
     hall: number,
-    price: number
+    price: number,
+    imgPath: string
 
 }
