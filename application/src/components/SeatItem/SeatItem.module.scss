@@ -1,5 +1,18 @@
 .SeatItem {
-  border: 1px solid white;
-  padding: 10px;
-  margin: 10px;
+  position: relative;
+  img{
+    margin: 10px;
+    &.booked{
+      filter: invert(.5);
+    }
+  }
+  .number{
+    position: absolute;
+    color: black;
+    top: 26px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+  }
 }

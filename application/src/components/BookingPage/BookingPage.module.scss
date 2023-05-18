@@ -1,10 +1,12 @@
 .BookingPage {
+  border-top: 4px solid white;
+  padding-top: 60px;
   .seats{
     &__content{
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
-      width: 500px;
+      width: 415px;
     }
   }
 }
