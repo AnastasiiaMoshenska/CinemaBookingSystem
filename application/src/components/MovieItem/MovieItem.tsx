@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './MovieItem.module.scss';
+import {useNavigate} from 'react-router-dom'
 
 export default function MovieItem(props: any){
+    const navigate = useNavigate();
+
+    const toBooking=()=>{
+        navigate('/booking', {state: props});
+    }
+
     return(
         <div className={styles.Movie}>
             <img src={props.movie.imgPath} alt="img"/>
@@ -36,7 +43,7 @@ export default function MovieItem(props: any){
                     <p className={styles.data}>{props.movie.date.slice(11, 16)}</p>
                 </div>
             </div>
-            <button>Book</button>
+            <button onClick={()=>{toBooking()}}>Book</button>
         </div>
     )
 }

@@ -16,11 +16,6 @@ public class SeatController {
     }
 
     @GetMapping()
-    public ResponseEntity<Iterable<Seat>> getSeats(){
-        return ResponseEntity.ok().body(seatService.getSeats());
-    }
-
-    @GetMapping("hall")
     public ResponseEntity<Iterable<Seat>> getSeatsPerHall(int hall){
         return ResponseEntity.ok().body(seatService.getSeatsPerHall(hall));
     }
