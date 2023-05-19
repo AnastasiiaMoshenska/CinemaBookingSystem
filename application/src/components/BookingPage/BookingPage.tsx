@@ -9,7 +9,6 @@ export default function BookingPage() {
     const [seats, setSeats] = useState<Array<Seat>>([]);
     const [chosenSeats, setChosenSeats] = useState<Array<Seat>>([]);
     const [clicks, setClicks] = useState(0);
-    const [id, setId] = useState(0);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -21,9 +20,8 @@ export default function BookingPage() {
     }, [location.state.movie.hall]);
 
     const receiveClicks=(seatState: string, id: number)=>{
-        seatState ? setId(id) : setId(0);
         seatState ? setClicks(clicks + 1) : setClicks(clicks - 1);
-        seatState ? setChosenSeats(chosenSeats => [...chosenSeats, seats.find(s => s.id === id)]) : setChosenSeats(chosenSeats.filter(s => s.id === id));
+        setChosenSeats(chosenSeats => [...chosenSeats, seats.find(s => s.id === id)]);
     }
 
     const toConfirmation=()=>{
