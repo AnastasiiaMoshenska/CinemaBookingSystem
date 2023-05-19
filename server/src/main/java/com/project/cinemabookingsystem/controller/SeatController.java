@@ -20,7 +20,7 @@ public class SeatController {
         return ResponseEntity.ok().body(seatService.getSeatsPerHall(hall));
     }
 
-    @PutMapping()
+    @PutMapping("/all")
     public ResponseEntity<Iterable<Seat>> updateSeats(@RequestBody Seat[] seats){
         seatService.updateSeats(seats);
         return ResponseEntity.ok().build();
