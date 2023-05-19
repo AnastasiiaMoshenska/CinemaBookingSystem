@@ -5,14 +5,14 @@
   &.booked{
     pointer-events: none;
     img{
-      filter: invert(.7);
+      filter: invert(38%) sepia(7%) saturate(4550%) hue-rotate(314deg) brightness(103%) contrast(77%);
     }
     span{
       color: white;
     }
   }
   &.clicked img{
-    filter: invert(0.4) drop-shadow(0 0 0.05rem white);;
+    filter: invert(29%) sepia(14%) saturate(4710%) hue-rotate(99deg) brightness(104%) contrast(74%)
   }
   .number{
     position: absolute;
