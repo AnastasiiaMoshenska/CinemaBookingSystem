@@ -36,6 +36,14 @@
       &.book{
         background: lightgreen;
         width: 88px;
+        &:disabled{
+          background: gray;
+          cursor: auto;
+          color: white;
+          &:hover{
+            border-color: gray;
+          }
+        }
       }
     }
     .cancel{

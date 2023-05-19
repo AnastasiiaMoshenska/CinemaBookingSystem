@@ -3,18 +3,40 @@ import {useEffect, useState} from "react";
 import Seat from "../../model/Seat";
 import {RestClient} from "../../rest-client/RestClient";
 import SeatItem from "../SeatItem/SeatItem";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 export default function BookingPage() {
-    const [seats, setSeats] = useState<Array<Seat>>([])
+    const [seats, setSeats] = useState<Array<Seat>>([]);
+    const [chosenSeats, setChosenSeats] = useState<Array<Seat>>([]);
+    const [clicks, setClicks] = useState(0);
+    const [id, setId] = useState(0);
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         RestClient.getSeats(location.state.movie.hall).then(
             seats => setSeats(seats)
         )
     }, [location.state.movie.hall]);
+
+    const receiveClicks=(seatState: string, id: number)=>{
+        seatState ? setId(id) : setId(0);
+        seatState ? setClicks(clicks + 1) : setClicks(clicks - 1);
+        seatState ? setChosenSeats(chosenSeats => [...chosenSeats, seats.find(s => s.id === id)]) : setChosenSeats(chosenSeats.filter(s => s.id === id));
+    }
+
+    const toConfirmation=()=>{
+        RestClient.changeSeats(chosenSeats).then(
+            ()=>{
+                navigate('/confirmation', {state: {
+                    id: location.state.movie.id,
+                        title: location.state.movie.title,
+                        date: location.state.movie.date
+                    }})
+            }
+        )
+    }
 
     return (
         <div className={styles.BookingPage}>
@@ -30,15 +52,16 @@ export default function BookingPage() {
                         <SeatItem
                             key={seat.id}
                             seat={seat}
+                            sendClick={receiveClicks}
                         />
                     ))}
                 </div>
                 <div className={styles.seats__selected}>
-                    <p>Quantity:<span>2 x {location.state.movie.price}</span>CHF</p>
-                    <p>Total sum:<span>{location.state.movie.price * 2}</span>CHF</p>
+                    <p>Quantity:<span>{clicks} x {location.state.movie.price}</span>CHF</p>
+                    <p>Total sum:<span>{location.state.movie.price * clicks}</span>CHF</p>
                     <div className={styles.buttons}>
                         <Link className={styles.cancel} to="/">Cancel</Link>
-                        <button className={styles.book}>Book</button>
+                        <button disabled={!clicks} onClick={toConfirmation} className={styles.book}>Book</button>
                     </div>
                 </div>
             </div>

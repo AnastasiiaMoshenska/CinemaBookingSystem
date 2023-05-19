@@ -15,4 +15,14 @@ export class RestClient{
         const response = await fetch(url);
         return await response.json();
     }
+
+    static async changeSeats(seats: Seat[]){
+        const url = `${RestClient.baseUrl}/seats/all`;
+        return await fetch(url,
+            {
+                method: "Put",
+                headers: {"Accept": "application/json", "Content-Type": "application/json"},
+                body: JSON.stringify(seats)
+            })
+    }
 }

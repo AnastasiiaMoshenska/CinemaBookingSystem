@@ -1,15 +1,23 @@
 .SeatItem {
   position: relative;
-  img{
-    margin: 10px;
-    &.booked{
-      filter: invert(.5);
+  margin: 10px;
+  cursor: pointer;
+  &.booked{
+    pointer-events: none;
+    img{
+      filter: invert(.7);
     }
+    span{
+      color: white;
+    }
+  }
+  &.clicked img{
+    filter: invert(0.4) drop-shadow(0 0 0.05rem white);;
   }
   .number{
     position: absolute;
     color: black;
-    top: 26px;
+    top: 16px;
     left: 0;
     width: 100%;
     text-align: center;
