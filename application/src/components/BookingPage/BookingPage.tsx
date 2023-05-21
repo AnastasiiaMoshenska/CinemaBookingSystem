@@ -21,7 +21,7 @@ export default function BookingPage() {
 
     const receiveClicks=(seatState: string, id: number)=>{
         seatState ? setClicks(clicks + 1) : setClicks(clicks - 1);
-        setChosenSeats(chosenSeats => [...chosenSeats, seats.find(s => s.id === id)]);
+        seatState ? setChosenSeats(chosenSeats => [...chosenSeats, seats.find(s => s.id === id)]) : setChosenSeats(chosenSeats.filter(a => a.id !== id));
     }
 
     const toConfirmation=()=>{
